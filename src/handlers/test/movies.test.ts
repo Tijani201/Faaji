@@ -14,7 +14,7 @@ const newMovie = {
   release_date: 1997
 }
 
-// test to add a movie
+// test to add a movies
 describe('POST /movies/add', () => {
   it('should Add movie', (done) => {
     request
@@ -29,7 +29,7 @@ describe('POST /movies/add', () => {
   })
 })
 
-// test to delete a movie
+// test to delete a movies
 describe('DELETE /movies/:id', () => {
   it('should delete a movie', (done) => {
     request
@@ -53,7 +53,7 @@ describe('DELETE /movies/:id', () => {
   })
 })
 
-// test to update a movie
+// test to update a movies
 describe('PUT /movies/:id', () => {
   it('should UPDATE a movie given the id', (done) => {
     request
