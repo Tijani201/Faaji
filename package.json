@@ -3,22 +3,30 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "tsc",
-    "start": "nodemon ./src/bin/www.ts",
+    "clean": "rimraf build/",
+    "build": "npm run clean && tsc && npm run copy-files",
+    "start": "node ./build/bin/www.js",
+    "dev": "nodemon ./src/bin/www.ts",
     "test": "cross-env NODE_ENV=test mocha -r ts-node/register \"./src/**/*.test.ts\"",
-    "coverage": "nyc --reporter=lcov --reporter=text npm run test"
+    "copy-files": "copyfiles -u 1 src/spec/*.yaml build/",
+    "coverage": "nyc --reporter=lcov --reporter=text npm run test",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "undo:migration": "npx sequelize-cli db:migrate:undo:all"
   },
+
   "dependencies": {
     "@babel/runtime": "^7.16.7",
     "@types/express": "^4.17.13",
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
+    "npm": "^8.5.5",
     "path": "^0.12.7",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
@@ -51,6 +59,7 @@
     "cross-env": "^7.0.3",
     "mocha": "^9.2.0",
     "nyc": "^15.1.0",
+    "sequelize-cli": "^6.4.1",
     "supertest": "^6.2.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5"
