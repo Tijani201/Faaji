@@ -5,7 +5,7 @@ import { BaseHandler } from '../interfaces/handlers'
 // Get all movies
 class Movie extends BaseHandler {
   static getAllMovies(req: Request, res: Response) {
-    return res.status(200).send( movies )
+    return res.status(200).send(movies)
   }
 
   // Get a movie
